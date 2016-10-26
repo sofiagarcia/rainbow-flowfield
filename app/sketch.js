@@ -1,6 +1,8 @@
 var inc = 0.1;
 var scl = 10;
-var cols, rows;
+var cols, rows, canvas;
+var nameInput, button;
+
 
 var zoff = 0;
 
@@ -10,7 +12,15 @@ var flowfield = [];
 
 function setup() {
   background(255);
-  createCanvas(300, 300);
+  canvas = createCanvas(300, 300);
+  canvas.parent(canvasContainer);
+
+  greeting = createElement('h2', 'what is your name?');
+
+  nameInput = createInput();
+  button = createButton("Submit");
+  button.mousePressed(generateArt);
+
   cols = floor(width/scl);
   rows = floor(height/scl);
 
@@ -22,38 +32,49 @@ function setup() {
 
 }
 
-function draw(){
 
-  var yoff = 0;
 
-  for(var y = 0; y < rows; y++){
-    var xoff = 0;
-    for(var x = 0; x < cols; x++) {
-      var index = (x + y * cols);
-      var angle = noise(xoff, yoff, zoff) * TWO_PI;
-      var v = p5.Vector.fromAngle(angle);
-      v.setMag(1);
-      flowfield[index] = v;
-      xoff += inc;
-      stroke(0, 50);
-      // push();
-      // translate(x * scl, y * scl);
-      // rotate(v.heading());
-      // strokeWeight(1);
-      // line(0, 0, scl, 0);
-      // pop();
+function generateArt() {
+      this.name = nameInput.value();
+      greeting.html('hello '+ this.name +'!');
+      this.letters = [];
+      // this.letters = name.split('');
+
+      for(var i = 0; i < this.name.length; i++){
+            this.letters.push(
+              this.name.charCodeAt(i)
+            );
+        //  );
+      }
+      console.log(this.letters);
+
+
+      this.yoff = 0;
+
+    for(var y = 0; y < rows; y++){
+      this.xoff = 0;
+      for(var x = 0; x < cols; x++) {
+        this.index = (x + y * cols);
+        this.angle = noise(this.xoff, this.yoff, zoff) * TWO_PI;
+        this.v = p5.Vector.fromAngle(this.angle);
+        this.v.setMag(1);
+        flowfield[this.index] = this.v;
+        this.xoff += inc;
+        stroke(0, 50);
+
+      }
+      this.yoff += inc;
+      this.zoff += 0.001;
     }
-    yoff += inc;
-    zoff += 0.0001;
-  }
+}
+
+function draw(){
 
   for(var i = 0; i < particles.length; i++){
     particles[i].follow(flowfield);
     particles[i].update();
     particles[i].edges();
     particles[i].show();
-
   }
-
 
 }
