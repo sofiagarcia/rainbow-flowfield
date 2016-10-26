@@ -50,8 +50,9 @@ function draw(){
   for(var i = 0; i < particles.length; i++){
     particles[i].follow(flowfield);
     particles[i].update();
-    particles[i].show();
     particles[i].edges();
+    particles[i].show();
+
   }
 
 
