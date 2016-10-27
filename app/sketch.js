@@ -3,26 +3,25 @@ var scl = 10;
 var cols, rows, canvas;
 var nameInput, button;
 
-var zoff = 0;
+var zoff = 0.1;
 
 var particles = [];
 var flowfield = [];
 
 function setup() {
   background(255);
-  canvas = createCanvas(300, 300);
+  canvas = createCanvas(windowWidth, 300);
   canvas.parent(canvasContainer);
-  // drawing = new Drawing();
   greeting = createElement('h2', 'what is your name?');
+  greeting.style("font-family:sans-serif; font-weight:200; text-align:center, display:block");
 
   nameInput = createInput();
   button = createButton("Submit");
   button.mousePressed(nameValue);
+  button.style("text-align:center; background-color:#000; color: white; border:none; display:block");
 
   cols = floor(width/scl);
   rows = floor(height/scl);
-
-  // drawing = new Drawing();
 
   flowfield = new Array(cols * rows);
 
@@ -34,18 +33,18 @@ function setup() {
 var letters = [];
 function nameValue(name){
   this.name = nameInput.value();
-  // this.letters = [];
-  greeting.html('hello '+ this.name +'!');
+  greeting.html('Hello '+ this.name +'!');
 
   for(var i = 0; i < this.name.length; i++){
         letters.push(
         this.name.charCodeAt(i)
       );
     }
-    console.log(letters);
+
     createField();
   }
 
+  console.log(letters);
 
 function createField(){
     this.yoff = 0;
@@ -57,11 +56,11 @@ function createField(){
         this.v = p5.Vector.fromAngle(this.angle);
         this.v.setMag(1);
         flowfield[this.index] = this.v;
-        this.xoff += inc;
+        this.xoff += inc+(letters[0]/100);
         stroke(50, 50);
-      }
-    this.yoff += inc;
-    this.zoff += 0.001;
+    }
+    this.yoff += inc+(letters[1]/100);
+    this.zoff += 0.001 * (letters[2]/1000);
     }
   }
 
