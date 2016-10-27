@@ -1,12 +1,12 @@
-body {
-  background-image: url("/assets/brickwall_@2X.png");
-  background-repeat: repeat-y repeat-x; }
-
 #header {
   text-align: center;
   font-family: sans-serif;
-  font-weight: 100;
   margin: 3.5% auto; }
+  #header h1 {
+    font-family: helvetica;
+    font-weight: 300; }
+    #header h1 .dot {
+      color: #f8931f; }
 
 .canvas-container {
   display: block;

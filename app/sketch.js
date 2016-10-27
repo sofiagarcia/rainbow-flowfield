@@ -13,12 +13,13 @@ function setup() {
   canvas = createCanvas(windowWidth, 300);
   canvas.parent(canvasContainer);
   greeting = createElement('h2', 'what is your name?');
-  greeting.style("font-family:sans-serif; font-weight:200; text-align:center, display:block");
+  greeting.style("font-family:sans-serif; font-weight:200; text-align:center; margin:2% auto;");
 
   nameInput = createInput();
-  button = createButton("Submit");
+  nameInput.style("text-align:center; background-color:#fff; color: black; border:1px solid #fccabf; border-radius:3%; display:block; margin:2.3% auto; padding: 1%; box-shadow: 0 3px 4px rgba(0,0,0,0.16), 0 3px 5px rgba(0,0,0,0.23);");
+  button = createButton("Generate!");
   button.mousePressed(nameValue);
-  button.style("text-align:center; background-color:#000; color: white; border:none; display:block");
+  button.style("text-align:center; background-color:#fccabf; font-weight:300; border:none; display:block; margin:1% auto; padding:1% 2%; box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);");
 
   cols = floor(width/scl);
   rows = floor(height/scl);
@@ -33,7 +34,7 @@ function setup() {
 var letters = [];
 function nameValue(name){
   this.name = nameInput.value();
-  greeting.html('Hello '+ this.name +'!');
+  greeting.html('Hello, '+ this.name +'!');
 
   for(var i = 0; i < this.name.length; i++){
         letters.push(
@@ -75,4 +76,5 @@ function draw(){
 }
 
 function mousePressed() {
+  
 }
