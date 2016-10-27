@@ -2,7 +2,7 @@ function Particle() {
 
   this.pos = createVector(random(letters[2]), random(letters[0]));
   this.vel = createVector(0, 0);
-  this.acc = createVector(0, 0);
+  this.acc = createVector(random(letters[1]/100), 0);
   this.maxspeed = 3;
 
   this.prevPos = this.pos.copy();
@@ -27,8 +27,12 @@ function Particle() {
   }
 
   this.show = function() {
-    stroke(this.pos.x+random(letters[0]), this.pos.y + random(letters[1]), random(letters[2]), 27);
-    strokeWeight(3.2);
+    this.r = map(letters[0], 65, 122, -50, 100);
+    this.g = map(letters[1], 65, 122, -50, 100);
+    this.b = map(letters[2], 65, 122, -50, 100);
+    stroke(this.pos.x + (this.r/3), this.pos.y - (this.g/3), ((this.pos.x + this.pos.y)/2)*this.b/3);
+    // stroke(this.pos.x, this.pos.y - random(letters[1]), letters[0]-(this.pos.y/2), 27);
+    strokeWeight(2.2);
     line(this.pos.x, this.pos.y, this.prevPos.x, this.prevPos.y);
     this.updatePrev();
 
