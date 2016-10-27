@@ -16,7 +16,7 @@ function setup() {
   greeting.style("font-family:sans-serif; font-weight:200; text-align:center; margin:2% auto;");
 
   nameInput = createInput();
-  nameInput.style("text-align:center; background-color:#fff; color: black; border: none; border-radius:3%; display:block; margin:2.3% auto; padding: 1%; box-shadow: 0 3px 4px rgba(0,0,0,0.16), 0 3px 5px rgba(0,0,0,0.23);");
+  nameInput.style("text-align:center; background-color:#fff; color: black; border:1px solid #172847; border-radius:3%; display:block; margin:2.3% auto; padding: 1%; box-shadow: 0 3px 4px rgba(0,0,0,0.16), 0 3px 5px rgba(0,0,0,0.23);");
   button = createButton("Generate!");
   button.mousePressed(nameValue);
   button.style("text-align:center; background-color:#172847; color:white; font-weight:300; border:none; display:block; margin:1% auto; padding:1% 2%; box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);");
