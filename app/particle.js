@@ -27,10 +27,10 @@ function Particle() {
   }
 
   this.show = function() {
-    this.r = map(letters[0], 65, 122, -50, 100);
-    this.g = map(letters[1], 65, 122, -50, 100);
-    this.b = map(letters[2], 65, 122, -50, 100);
-    stroke(this.pos.x + (this.r/3), this.pos.y - (this.g/3), ((this.pos.x + this.pos.y)/2)*this.b/3);
+    this.r = map(letters[0], 65, 122, -50, this.pos.x);
+    this.g = map(letters[1], 65, 122, -50, this.pos.y);
+    this.b = map(letters[2], 65, 122, -50, this.pos.y);
+    stroke(this.r, this.g, this.b);
     // stroke(this.pos.x, this.pos.y - random(letters[1]), letters[0]-(this.pos.y/2), 27);
     strokeWeight(2.2);
     line(this.pos.x, this.pos.y, this.prevPos.x, this.prevPos.y);
